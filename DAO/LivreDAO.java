@@ -1,6 +1,3 @@
-
-import models.Livre;
-import src.exceptions.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -158,6 +155,39 @@ class LivreDAO {
             throw new BaseDeDonneesException("Erreur lors de la modification", e);
         }
     }
+
+    public List<Livre> rechercherParAuteur(String auteur) throws BaseDeDonneesException {
+    try {
+        List<Livre> livres = new ArrayList<>();
+        PreparedStatement ps = conn.prepareStatement(
+            "SELECT * FROM livres WHERE auteur LIKE ?"
+        );
+        ps.setString(1, "%" + auteur + "%");
+        
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            try {
+                livres.add(new Livre(
+                    rs.getInt("id"),
+                    rs.getString("titre"),
+                    rs.getString("auteur"),
+                    rs.getInt("annee"),
+                    rs.getString("genre")
+                ));
+            } catch (LivreException | IllegalArgumentException e) {
+                System.err.println("Livre invalide en base (ID: " + rs.getInt("id") + "): " + e.getMessage());
+            }
+        }
+        
+        rs.close();
+        ps.close();
+        return livres;
+        
+    } catch (SQLException e) {
+        throw new BaseDeDonneesException("Erreur lors de la recherche par auteur", e);
+    }
+}
 
     public void fermer() {
         try {
