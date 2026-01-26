@@ -53,16 +53,16 @@ public class Main {
 
     // Petite méthode utilitaire pour afficher la liste proprement
     private static void afficherListe(LivreDAO dao) throws BaseDeDonneesException {
-        System.out.println("\n LISTE DES LIVRES EN BASE ");
+        System.out.println("\n═══════════════ LISTE DES LIVRES EN BASE ═══════════════");
         List<Livre> catalogue = dao.getTousLesLivres();
         if (catalogue.isEmpty()) {
             System.out.println("La base est vide.");
         } else {
             for (Livre l : catalogue) {
-                System.out.printf("ID: %d | %-20s | %-20s | %d | %s%n", 
+                System.out.printf("ID: %d | %-30s | %-25s | %d | %s%n", 
                     l.getId(), l.getTitre(), l.getAuteur(), l.getAnnee(), l.getGenre());
             }
         }
-        System.out.println("\n");
+        System.out.println("════════════════════════════════════════════════════════\n");
     }
 }
