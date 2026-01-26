@@ -1,10 +1,10 @@
 public class Livre {
-    private String nom;
+    private String titre;
     private String auteur;
     private int annee;
     private static int nbLivres;
 
-    public Livre(String nom, String auteur, int annee) throws AnneInvalideExeption{
+    public Livre(String titre, String auteur, int annee) throws AnneInvalideExeption{
         if (titre == null || titre.trim().isEmpty()) {
             throw new IllegalArgumentException("Le titre ne peut pas être vide");
         }
