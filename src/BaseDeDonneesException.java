@@ -1,4 +1,4 @@
-class BaseDeDonneesException extends LivreException {
+public class BaseDeDonneesException extends LivreException {
     public BaseDeDonneesException(String message) {
         super(message);
     }

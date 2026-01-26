@@ -1,4 +1,4 @@
-class LivreNonTrouveException extends BaseDeDonneesException {
+public class LivreNonTrouveException extends BaseDeDonneesException {
     public LivreNonTrouveException(String message) {
         super(message);
     }
