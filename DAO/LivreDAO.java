@@ -1,8 +1,15 @@
+package DAO;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import models.Livre;
+import exceptions.BaseDeDonneesException;
+import exceptions.LivreException;
+import exceptions.AnneeInvalideException;
+import exceptions.LivreNonTrouveException;
 
-class LivreDAO {
+public class LivreDAO {
     private Connection conn;
 
     public LivreDAO() throws BaseDeDonneesException {

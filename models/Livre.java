@@ -1,3 +1,6 @@
+package models;
+import exceptions.AnneeInvalideException;
+
 public class Livre {
     private int id;
     private String titre;
@@ -6,7 +9,7 @@ public class Livre {
     private String genre;
     private static int nbLivres = 0;
 
-    public Livre(String titre, String auteur, int annee, String genre) throws AnneeInvalideExeption {
+    public Livre(String titre, String auteur, int annee, String genre) throws AnneeInvalideException {
         if (titre == null || titre.trim().isEmpty()) {
             throw new IllegalArgumentException("Le titre ne peut pas être vide");
         }
@@ -14,7 +17,7 @@ public class Livre {
             throw new IllegalArgumentException("L'auteur ne peut pas être vide");
         }
         if (annee < 0) {
-            throw new AnneeInvalideExeption("Année invalide: " + annee);
+            throw new AnneeInvalideException("Année invalide: " + annee);
         }
         
         this.titre = titre.trim();
@@ -24,7 +27,7 @@ public class Livre {
         nbLivres++;
     }
 
-    public Livre(int id, String titre, String auteur, int annee, String genre) throws AnneeInvalideExeption {
+    public Livre(int id, String titre, String auteur, int annee, String genre) throws AnneeInvalideException {
         if (titre == null || titre.trim().isEmpty()) {
             throw new IllegalArgumentException("Le titre ne peut pas être vide");
         }
@@ -32,7 +35,7 @@ public class Livre {
             throw new IllegalArgumentException("L'auteur ne peut pas être vide");
         }
         if (annee < 0) {
-            throw new AnneeInvalideExeption("Année invalide: " + annee);
+            throw new AnneeInvalideException("Année invalide: " + annee);
         }
         
         this.id = id;
