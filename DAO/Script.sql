@@ -1,6 +1,3 @@
--- Script SQL pour créer et remplir la base de données livres.db
--- À exécuter avec SQLite3
-
 -- Suppression de la table si elle existe déjà
 DROP TABLE IF EXISTS livres;
 
