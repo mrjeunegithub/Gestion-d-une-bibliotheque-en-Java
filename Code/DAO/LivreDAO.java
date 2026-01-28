@@ -15,7 +15,7 @@ public class LivreDAO {
     public LivreDAO() throws BaseDeDonneesException {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:/dane/ecole/GAP-3/POO/gestion de biblioteque/livres.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:livres.db");
            
             conn.createStatement().execute(
                 "CREATE TABLE IF NOT EXISTS livres (" +
