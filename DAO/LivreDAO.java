@@ -14,7 +14,8 @@ public class LivreDAO {
 
     public LivreDAO() throws BaseDeDonneesException {
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:livres.db");
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:C:/dane/ecole/GAP-3/POO/gestion de biblioteque/livres.db");
            
             conn.createStatement().execute(
                 "CREATE TABLE IF NOT EXISTS livres (" +
@@ -24,6 +25,8 @@ public class LivreDAO {
                 "annee INTEGER NOT NULL," +
                 "genre TEXT DEFAULT 'non spécifié')"
             );
+        } catch (ClassNotFoundException e) {
+            throw new BaseDeDonneesException("Driver SQLite introuvable", e);
         } catch (SQLException e) {
             throw new BaseDeDonneesException("Erreur lors de la connexion à la base de données", e);
         }
